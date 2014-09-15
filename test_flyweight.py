@@ -24,12 +24,12 @@ class FlyObject(object):
 
 class FlyStorage:
 
-    counter = 0
+    counter = -1
     data = None
     Fly = Fly
     
     def __init__(self):
-        self.counter = 0
+        self.counter = -1
         self.data = {}
 
     def create_fly(self, *args):
@@ -65,6 +65,13 @@ l, storage = create_list_of_fly_flyweights()
 assert len(l) == len(loops)
 assert isinstance(storage.get_fly(1), Fly)
 
+filled_fly_storage = storage
+
+def retrieve_list_of_fly_flyweights():
+    storage = filled_fly_storage
+    l = [storage.get_fly(i) for i in loops]
+    return l, storage
+
 def create_list_of_flyobject_objects():
     l = [FlyObject() for i in loops]
     return l
@@ -79,6 +86,13 @@ def create_list_of_flyobject_flyweights():
 l, storage = create_list_of_flyobject_flyweights()
 assert len(l) == len(loops)
 assert isinstance(storage.get_fly(1), FlyObject)
+
+filled_flyobject_storage = storage
+
+def retrieve_list_of_flyobject_flyweights():
+    storage = filled_flyobject_storage
+    l = [storage.get_fly(i) for i in loops]
+    return l, storage
 
 ###
 

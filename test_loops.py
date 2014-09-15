@@ -16,8 +16,8 @@ result = map(op, seq)
 
 def for_loop():
     l = seq[:]
-    for i in seq:
-        l[i] = op(i)
+    for i, x in enumerate(seq):
+        l[i] = op(x)
     return l
 
 assert for_loop() == result

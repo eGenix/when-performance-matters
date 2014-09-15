@@ -133,6 +133,17 @@ class SlotClass(object):
 
 slot_class_instance = SlotClass()
 
+try:
+    SlotClass().readonly_slot = 99
+except AttributeError:
+    pass
+else:
+    raise AssertionError('slot not read-only')
+try:
+    SlotClass().readwrite_slot = 99
+except TypeError:
+    raise AssertionError('slot not read-write')
+
 def slot_lookup_readwrite():
     o = slot_class_instance
     for i in loops:

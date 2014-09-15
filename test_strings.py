@@ -71,14 +71,14 @@ assert short_string_format() == result1
 
 import cStringIO
 
-def string_stringio():
+def string_cstringio():
     s = cStringIO.StringIO()
     write = s.write
     for part in l:
         write(part)
     return s.getvalue()
 
-assert string_stringio() == result
+assert string_cstringio() == result
 
 import array
 

@@ -40,6 +40,32 @@ def python_operators():
 
 assert python_operators() == result
 
+### Method calls
+
+class Class:
+    def add(self, a, b):
+        return a + b
+
+
+def python_method():
+    test_instance = Class()
+    a, b = 1, 2
+    f = test_instance.add
+    for i in xrange(1000):
+        f(a, b)
+    return f(a, b)
+
+assert python_method() == result
+
+def python_method_with_lookup():
+    test_instance = Class()
+    a, b = 1, 2
+    for i in xrange(1000):
+        test_instance.add(a, b)
+    return test_instance.add(a, b)
+
+assert python_method_with_lookup() == result
+
 ###
 
 if __name__ == '__main__':
