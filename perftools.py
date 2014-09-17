@@ -156,7 +156,7 @@ def memory_check_functions(module_dict):
         if memsize < 1024:
             memuse = '%5i bytes' % memsize
         elif memsize < 1048576:
-            memuse = '%5.2f KB' % (memsize / 1024.0)
+            memuse = '%5.2f kB' % (memsize / 1024.0)
         else:
             memuse = '%5.2f MB' % (memsize / 1048576.0)
         print ('Memory use: %s' % memuse)

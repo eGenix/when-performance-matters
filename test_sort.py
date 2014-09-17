@@ -13,10 +13,44 @@ loops = range(1000)
 
 ### Sorting tuples
 
-seq1 = reversed(loops)
+seq1 = loops[:]
 seq2 = loops[:]
+seq2.reverse()
 seq = zip(seq1, seq2)
-result = seq[:]
+result = zip(seq2, seq1)
+
+def list_sort_method():
+
+    l = result[:]
+    l.sort()
+    return l
+
+assert list_sort_method() == seq
+
+def list_sorted():
+
+    l = sorted(result)
+    return l
+
+assert list_sorted() == seq
+
+def decorate_sort():
+
+    dl = [(x[1], x) for x in seq]
+    dl.sort()
+    l = [b for a, b in dl]
+    return l
+
+assert decorate_sort() == result
+
+def decorate_sort_generators():
+
+    l = [x for (item, x) in sorted((x[1], x) for x in seq)]
+    # using indexing is slightly slower:
+    #l = [y[1] for y in sorted((x[1], x) for x in seq)]
+    return l
+
+assert decorate_sort_generators() == result
 
 def key_lambda_sort():
     l = seq[:]

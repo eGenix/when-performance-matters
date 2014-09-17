@@ -31,6 +31,18 @@ assert variable_lookup_local() == 'local'
 
 ### Localized global variables
 
+def variable_lookup_function_with_locals():
+    local_a = global_a
+    def f(a, b, c):
+        x = a
+        y = b
+        return y
+    for i in loops:
+        x = f(1, 2, 3)
+    return x
+
+assert variable_lookup_function_with_locals() == 2
+
 def variable_lookup_function_with_global():
     local_a = global_a
     def f(a, b, c):
