@@ -19,6 +19,9 @@ l1 = [[str(i+j) for i in range(4)]
 short_format_str = ''.join(['%s' for i in range(4)])
 result1 = ''.join(l1[-1])
 
+l_more = [str(i) for i in range(1000000)]
+result_more = ''.join(l_more)
+
 def string_concat():
     s = ''
     for part in l:
@@ -90,6 +93,25 @@ def string_array():
     return s.tostring()
 
 assert string_array() == result
+
+
+def string_cstringio_more():
+    s = cStringIO.StringIO()
+    write = s.write
+    for part in l_more:
+        write(part)
+    return s.getvalue()
+
+assert string_cstringio_more() == result_more
+
+
+def string_concat_more():
+    s = ''
+    for part in l_more:
+        s += part
+    return s
+
+assert string_concat_more() == result_more
 
 ###
 
